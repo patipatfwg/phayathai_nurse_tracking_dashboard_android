@@ -13,4 +13,10 @@
     <color name="color_text_room">#FFFFFF</color>
     <color name="color_text_nurse">#000</color>
     <color name="color_text_nurse_bold">#a67b07</color>
+
+    <color name="phayathai_bar">#57a89c</color>
+    <color name="phayathai_bar2">#7dbbb2</color>
+    <color name="phayathai_room">#007d68</color>
+
+
 </resources>

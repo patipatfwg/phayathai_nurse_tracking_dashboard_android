@@ -20,6 +20,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.ArrayList
 
 class RoomFragment: Fragment(), RoomListener {
 
@@ -56,13 +57,17 @@ class RoomFragment: Fragment(), RoomListener {
     {
 
         val MDC_URL = "http://freewillmdc.loginto.me:56870/"
-        val PHAYATHAI_URL = "http://192.168.43.254/"
+        val MYHOME_URL = "http://192.168.43.198/"
         val SOSO_URL = "http://192.168.1.51/"
-        val SOSOFWG_URL = "http://10.32.10.71/"
+        val SOSO_URL2 = "http://192.168.43.198/"
+        val SOSOFWG_URL = "http://192.168.0.105/"
+        val SOSOFWG2_URL = "http://10.32.10.114/"
+        val KSWEB_URL = "http://10.32.10.185:8080/"
+
         val path_URL = "phayathai_nurse_tracking_backend/api/"
         val retrofit = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(PHAYATHAI_URL+path_URL)
+            .baseUrl(KSWEB_URL+path_URL)
             .build()
         val phayathaiApi  = retrofit.create(phayathaiApi::class.java)
         var myCall: Call<ViewRes> = phayathaiApi.getRoom()
@@ -76,28 +81,31 @@ class RoomFragment: Fragment(), RoomListener {
             {
                 val responseJSON = response.body()
                 val room_list = responseJSON?.body?.room
+                Log.d("Res " , room_list.toString())
+                val room_listY = room_list?.subList(0,8)
+                val room_listX = room_list?.subList(8,room_list.size)
 
 //                Log.d("|responseJSON|", responseJSON?.body.toString())
                 Log.d("|Room| ",room_list.toString())
 
-                val roomAdapter = RoomAdapter( room_list , this@RoomFragment,context)
+                val roomAdapterY = RoomAdapter( ArrayList(room_listY) , this@RoomFragment,context)
+                val roomAdapterX = RoomAdapter( ArrayList(room_listX) , this@RoomFragment,context)
 
                 recyclerView_room.apply {
                     layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
                     isNestedScrollingEnabled = false
-                    adapter = roomAdapter
+                    adapter = roomAdapterY
                     onFlingListener = null
                 }
                 recyclerView_room2.apply {
                     layoutManager = GridLayoutManager(context, 2, GridLayoutManager.HORIZONTAL, false)
                     isNestedScrollingEnabled = false
-                    adapter = roomAdapter
+                    adapter = roomAdapterX
                     onFlingListener = null
                 }
 
-
-
-                roomAdapter.notifyDataSetChanged()
+                roomAdapterY.notifyDataSetChanged()
+                roomAdapterX.notifyDataSetChanged()
 
             }
         })

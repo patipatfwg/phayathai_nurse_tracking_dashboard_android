@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     android:padding="8dp"
-    android:background="@color/color_content_3">
+    android:background="@color/phayathai_room">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,13 +17,13 @@
         android:textColor="@color/color_text_nurse_bold"/>
     <TextView
         android:textStyle="bold"
-        android:text="CH"
+        android:text="TH"
         android:gravity="center_horizontal|center_vertical"
-        android:background="@drawable/bg_circle_yellow"
+        android:background="@drawable/bg_circle_red"
         android:id="@+id/textNurseTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:textSize="15dp"
         android:textColor="#fff"/>
 
 </LinearLayout>

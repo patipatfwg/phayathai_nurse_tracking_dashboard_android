@@ -51,7 +51,7 @@ class RoomAdapter(
                 if(size_nurse >0)
                 {
                     // แสดงรายชื่อพยาบาล
-                    setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.color_content_1))
+                    setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.phayathai_room))
                     var nurseAdapter =  NurseAdapter(room.nurse_list)
                     recyclerView_nurse.layoutManager = GridLayoutManager(context, 1, GridLayoutManager.HORIZONTAL, false)
                     recyclerView_nurse.isNestedScrollingEnabled = false
@@ -60,8 +60,8 @@ class RoomAdapter(
                     //
 
                     // Image
-                    val abc = findViewById(R.id.imgMember) as ImageView
-                    abc.setImageDrawable(getResources().getDrawable(R.drawable.ic_bed_active));
+                //    val abc = findViewById(R.id.imgMember) as ImageView
+                 //   abc.setImageDrawable(getResources().getDrawable(R.drawable.ic_bed_active));
                     //
                 }
                 else
